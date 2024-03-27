@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scattergories! </title>
+  <style>
+    /* Optional: Add some basic styling */
+    input[type="text"] {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Alphabet Game</h1>
+  <label for="letter">Choose a letter:</label>
+  <input type="text" id="letterInput">
+  <button onclick="startRound()">Start Round</button>
+  <div id="categories">
+    <!-- Add categories -->
+    <div>
+      <span>Animals:</span>
+      <input type="text" class="wordInput" disabled data-category="animals">
+      <button onclick="submitWord('animals')">Submit</button>
+      <span id="animalsScore">Score: 0</span>
+    </div>
+    <!-- Add more categories here -->
+  </div>
+  <br>
+  <div id="timer">Time Left: --</div>
+  <button onclick="endRound()">End Round</button>
+
+  <script>
+    let currentLetter = '';
+    let timeLeft = 10; // Time in seconds for each round
+    let timerInterval;
+
+    // Function to start a new round with a chosen letter
+    function startRound() {
+      currentLetter = document.getElementById("letterInput").value.trim().toUpperCase();
+      if (currentLetter.match(/^[A-Z]$/)) {
+        // Enable input fields for categories
+        document.querySelectorAll('.wordInput').forEach(input => input.removeAttribute('disabled'));
+        // Start the timer
+        timerInterval = setInterval(updateTimer, 1000);
+      } else {
+        alert('Please enter a valid single letter.');
+      }
+    }
+
+    // Function to update the timer display
+    function updateTimer() {
+      document.getElementById("timer").textContent = `Time Left: ${timeLeft} seconds`;
+      timeLeft--;
+      if (timeLeft < 0) {
+        endRound();
+      }
+    }
+
+    // Function to end the round
+    function endRound() {
+      clearInterval(timerInterval); // Stop the timer
+      document.querySelectorAll('.wordInput').forEach(input => input.setAttribute('disabled', 'disabled'));
+
+      // Gather answers from players
+      let answers = {};
+      document.querySelectorAll('.wordInput').forEach(input => {
+        const category = input.dataset.category;
+        const word = input.value.trim().toLowerCase();
+        answers[category] = word;
+      });
+
+      // Store answers in sessionStorage
+      sessionStorage.setItem('answers', JSON.stringify(answers));
+
+      // Redirect to review page
+      window.location.href = 'review.html';
+    }
+  </script>
+</body>
+</html>
