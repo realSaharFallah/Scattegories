@@ -2,12 +2,6 @@ let btnUsername = document.getElementById("btnUsername")
 let inpUsername = document.getElementById("username")
 
 
-btnUsername.onclick = function() {
-    localStorage.setItem("username",inpUsername.value)
-    window.location.href="welcome.html"
-
-}
-
 // Function to show the heading and the nav
 function showHeading() {
     const heading = document.querySelector('.heading')
@@ -31,6 +25,8 @@ window.onload = function() {
 function getRandomLetter() {
     //Not x
     var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P','Q', 'R', 'S', 'T','U','V','W','Y','Z'];
-    return LETTERS[Math.floor(Math.random() * LETTERS.length)];
-  }
+    var letter= LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    localStorage.setItem("letter", letter); // Use "letter" as the key
+    return letter
+}
 

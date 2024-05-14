@@ -10,22 +10,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stilark.css">
 </head>
+<style>
+    @media(max-width:850px){
+        #username-box {
+            width: 80%;
+        }
+        body{
+            transition: background-color 1s ease;
+        }
+    }
+    @media(max-width:600px){
+        .heading{
+            font-size: 40px;
+        }
+        .heading2{
+            font-size: 20px;
+        }
+        body{
+            background-color: black;
+        }
+        header{
+            background-color: black;
+        }
+    }
+    @media(max-width:400px){
+        .heading{
+            margin-top: 200px;
+        }
+        #username-box button{
+            width: 40%;
+        }
+    }
+
+</style>
 <body>
     <header>
         <nav>
-            <a href="htmlcss.html">Rulebook</a>
-            <a href="bildepunkter.html">About us</a>
+            <a href="aboutus.html">About us</a>
 
         </nav>
     </header>
 
-    <h1 class="heading">Welcome to Scattegories!</h1>
-    <p class="heading2">Get ready for a fun game you can play with your friends! Each round, you'll get a letter and 12 categories. Come up with words or phrases starting with that letter. Then, rate each other's answers and see who's the best! Join the fun and start playing now!</p>
+    <h1 class="heading">Welcome to WordPlay Academy!</h1>
+    <p class="heading2"> <i>Words</i> are your playground for learning! Whether you're mastering vocabulary or seeking a linguistic thrill, our diverse selection of word-based activities offers something for every level. Welcome to the ultimate destination for word lovers!</p>
     <div id="username-box">
         <input autocomplete="off" type="text" placeholder ="Username" id="username" maxlength="10">
         <button id="btnUsername">Enter</button>
     </div>
     <video autoplay muted  id="myVideo" src="Media/background.mp4" type="video/mp4"></video>
     <script src="script.js"></script>
+    <script>
+
+    btnUsername.onclick = function() {
+        localStorage.setItem("username",inpUsername.value)
+        window.location.href="welcome.html"
+    }
+    </script>
 </body>
 </html>
