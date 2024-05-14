@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scattergories!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stilark.css">
+</head>
+<style>
+    @media(max-width:850px){
+        #username-box {
+            width: 80%;
+        }
+        body{
+            transition: background-color 1s ease;
+        }
+    }
+    @media(max-width:600px){
+        .heading{
+            font-size: 40px;
+        }
+        .heading2{
+            font-size: 20px;
+        }
+        body{
+            background-color: black;
+        }
+        header{
+            background-color: black;
+        }
+    }
+    @media(max-width:400px){
+        .heading{
+            margin-top: 200px;
+        }
+        #username-box button{
+            width: 40%;
+        }
+    }
+
+</style>
+<body>
+    <header>
+        <nav>
+            <a href="aboutus.html">About us</a>
+
+        </nav>
+    </header>
+
+    <h1 class="heading">Welcome to WordPlay Academy!</h1>
+    <p class="heading2"> <i>Words</i> are your playground for learning! Whether you're mastering vocabulary or seeking a linguistic thrill, our diverse selection of word-based activities offers something for every level. Welcome to the ultimate destination for word lovers!</p>
+    <div id="username-box">
+        <input autocomplete="off" type="text" placeholder ="Username" id="username" maxlength="10">
+        <button id="btnUsername">Enter</button>
+    </div>
+    <video autoplay muted  id="myVideo" src="Media/background.mp4" type="video/mp4"></video>
+    <script src="script.js"></script>
+    <script>
+
+    btnUsername.onclick = function() {
+        localStorage.setItem("username",inpUsername.value)
+        window.location.href="welcome.html"
+    }
+    </script>
+</body>
+</html>

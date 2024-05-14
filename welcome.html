@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="stilark.css">
+    <style>
+        body{
+            background-color: black;
+            transition: 1s opacity;
+        }
+
+        #rulebook{
+            font-family: 'Nunito';
+            color: white;
+            border: white solid 2px;
+            width: 0;
+            padding: 20px;
+            overflow-y: auto; /* Can scroll */
+            z-index: 0;
+            opacity: 0;
+            max-height: 96%;
+        }
+
+        #rulebook h1{
+            line-height: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: bold;
+            padding-bottom: 35px;
+            font-size: 46px;
+            border-bottom: white solid 1px;
+            font-weight:600;
+            margin: 10px;
+        }
+
+        #rulebook p {
+            font-size: 14px;  
+            line-height: 25px;
+            margin: 10px;
+        }
+
+        #rulebook h2{
+            line-height: 30px;
+            margin: 10px;
+        }
+
+        #rulebook img{
+            width: 100%;
+            margin: 10px;
+        }
+
+        #doneEarly{
+            color: white;
+            background-color: transparent;
+            margin-right: 20px;
+            padding: 10px;
+            font-family: "Nunito";
+            cursor: pointer;
+            border:1px solid white;
+            border-radius: 5px;
+
+        }
+
+    @media(max-width:850px){
+    
+    body{
+        transition: background-color 1s ease;
+    }
+    #fadeText{
+        text-align: center;
+        font-size: 20px;
+        
+    }
+
+    #whiteBox{
+        display: flex;
+        flex-direction: column;
+        padding-right: 50px;
+    }
+    #quizTable{
+        margin:20px auto;
+        width: 60%;
+    }
+    #rulebook{
+        margin-bottom:20px !important;
+        width: 90% !important;
+        min-height: 600px;
+
+    }
+    }
+
+    @media(max-width:600px){
+        nav{
+            font-size: 10px;
+        }
+        #purpose{
+            font-size: 20px;
+        }
+
+        body{
+            background-color: black;
+        }
+        header{
+            background-color: black;
+        }
+        #buttonContainer{
+            width: 100%;
+        }
+        #buttonContainer button{
+            width: 80%;
+            font-size: 15px;
+        }
+        .welcomecontainer{
+            margin: 0 auto;
+        }
+        #fadeText{
+            margin-left: 30px;
+        }
+
+    }
+    @media(max-width:400px){
+        #welcome{
+            font-size: 20px;
+        }
+        #purpose{
+            font-size: 10px;
+        }
+        #buttonContainer button{
+            width: 80%;
+            font-size: 10px;
+        }
+
+
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="aboutus.html">About us</a>
+        </nav>
+    </header>
+
+    <div class="welcomecontainer">
+    <h1 class="welcome-text" id="welcome" style="max-width: 80%; position: relative; left: 0;"></h1>
+    <h2 id="purpose"></h2>
+    <div id="buttonContainer">
+        <button id="scattegories"> Scattegories</button>
+        <button id="spellingbee">Spelling Bee</button>
+        <button id="guesstheword">Guess the Word?</button>
+    </div>
+    </div>
+
+    <div id="fadeText" style="opacity: 0; color: white;"></div> 
+    <div id="whiteBox" style=" width:0px; height: 0px; margin: 0 auto;">
+    <table id="quizTable" style="opacity:0;">
+        <!-- First row -->
+        <tr>
+            <td>
+                <div style="display: flex;">
+                    <p id="letterCircle"></p>
+                </div>
+            </td>  
+            <td>
+                <div id="timeContainer">
+                    <button id="doneEarly" >Done!</button>
+                    <span class="material-symbols-outlined">timer</span>
+                    <p class="time-left"></p>
+                </div>                
+            </td> 
+        </tr>
+
+        <!-- Second row -->
+        <tr id="thin-row">
+            <td id="secondRow" style="border:#f0f0f0 solid 1px; font-size: 15px; text-align: center; width: 100%; color: grey;" colspan="2"></td> <!-- colspan is number of solumns that it spans  -->
+        </tr>
+        
+        <!-- Third row (12 sub-rows with 2 columns each) -->
+        <div style="overflow-y: auto;">
+        <tbody id="thirdRow"></tbody>
+        </div>    
+    </table>
+
+    <div id="rulebook">
+        <p style="margin-bottom: 20px;">Scattegories</p>
+        <h1>Rulebook</h1>
+
+        <h2>Each round you will get a letter and 12 categories.</h2>
+        <h2> Answer each category with a word or phrase starting with that letter.</h2>
+
+        <img src="Media/example1.png" alt="Picture of an example of two cattegories starting with D">
+
+        <h2>Then the computer evalutes your answers and give you points.</h2>
+        <h2>Each correct answer recieves 1 point and wrong answers receive 0 point. </h2>
+
+        <p > The computer may sometimes yield false negatives. If you encounter any issues or have suggestions, use the "Contact Us" option.</p>
+        <img style="padding-bottom: 20px; border-bottom: grey solid 1px;" src="Media/example2.png" alt="One correct and one wrong answer ">
+
+        <p style="margin-bottom: 20px;">Guidelines for</p>
+        <h1>Scoring</h1>
+
+        <h2 >The word "The" does not count for letter T.</h2>
+        <p>For example, The Mother is not valid </p>
+        <p >The same is true for the words A and An</p>
+
+        <h2 >Avoid descriptive adjectives unless they are part of a common phrase.</h2>
+        <p > Ask yourself: is the adjective really important?</p>
+
+    </div>
+    </div>
+    
+
+    
+    <script src="script.js"></script>
+    <script>
+        let header = document.querySelector("header")
+        header.style.opacity = '1'
+        let textContainer = document.getElementById("welcome")
+        let username = localStorage.getItem("username")
+        let textToDisplay = "Welcome, " + username + "!"
+        let textContainer2 = document.getElementById("purpose")
+        let textToDisplay2  = "Well... What are you here for?"
+        const doneEarly = document.getElementById("doneEarly")
+        const rulebook = document.getElementById("rulebook")
+        let index1 = 0
+        let index2 = 0
+        let index3 = 0
+
+        function displayText() {
+            if (index1 < textToDisplay.length) {
+                if (textToDisplay[index1] === username[index3]) {
+                    textContainer.innerHTML += `<span class="highlight">${textToDisplay[index1]}</span>`;
+                    index3++
+                } else {
+                    textContainer.innerHTML += textToDisplay[index1];
+                }
+                index1++;
+                setTimeout(displayText, 100);
+            } else {
+                setTimeout(function () {
+                    animatePurposeText();
+                }, 500); // Delay before displaying purpose text
+            }
+        }
+
+        // Function to animate purpose text
+        function animatePurposeText() {
+            if (index2 < textToDisplay2.length) {
+                textContainer2.innerHTML += textToDisplay2[index2];
+                index2++;
+                setTimeout(animatePurposeText, 100);
+            }
+            else if(index2===textToDisplay2.length){
+                showButtons()
+            }
+        }
+
+        function showButtons(){
+            const buttonContainer = document.getElementById("buttonContainer")
+            buttonContainer.style.opacity="1"
+        }
+    
+
+  displayText()
+
+
+  let btnNewround = document.getElementById("scattegories")
+
+btnNewround.addEventListener('click', animateWelcomeText)
+btnNewround.addEventListener('click', fadetextfunc)
+
+
+
+
+function animateWelcomeText() {
+    const welcomeText = document.getElementById('welcome');
+
+    welcome.addEventListener("click",function(){
+            window.location.href="welcome.html"
+        })
+
+    // styles for animation
+    welcomeText.style.position = "absolute"
+    welcomeText.style.fontSize = "20px"
+    welcomeText.style.fontWeight = "normal"
+    welcomeText.style.top = '15px';
+    welcomeText.style.paddingTop = '0px';
+    welcomeText.style.left = '20px';
+    welcomeText.style.marginLeft = '20px';
+    welcomeText.style.zIndex = 2
+    buttonContainer.remove()
+    textContainer2.remove()
+}
+const fadeText = document.getElementById('fadeText');
+const letterNow = getRandomLetter()
+
+
+function fadetextfunc(){
+    const letterCircle = document.getElementById("letterCircle")
+    let secondRow =  document.getElementById("secondRow")
+    letterCircle.innerHTML = letterNow
+    secondRow.innerHTML = "Answer each category with a word or phrase starting with the letter " + letterNow
+
+    fadeText.innerHTML  = "Answer each category starting with the letter: " + letterNow
+    fadeText.style.opacity = '1'; // Fade in
+    setTimeout(function() {
+        fadeText.style.opacity = '0'
+        fadeText.style.zIndex = "0" 
+
+    }, 3000);
+
+    const whiteBox = document.getElementById('whiteBox');
+    const quizTable = document.getElementById('quizTable')
+    setTimeout(function() {
+        fadeText.style.width = "0" 
+        fadeText.style.height = "0" 
+        whiteBox.style.width = '95%'
+        whiteBox.style.height = '85%'
+        quizTable.style.width = '100%'
+        quizTable.style.margin = '20px'
+        quizTable.style.height = '100%'
+        quizTable.style.zIndex  = "1"
+        quizTable.style.opacity = "1"
+        rulebook.style.width = '55%'
+        rulebook.style.height = "100%"
+        rulebook.style.zIndex = "1"
+        rulebook.style.opacity = "1"
+        rulebook.style.margin = "20px"
+
+
+    }, 5000); // Start growing the white box after 2 seconds*
+
+    fillTable()
+
+    setTimeout(updateTime,3000)
+
+}
+
+function fillTable(){
+
+    const categories = [
+                "Car Parts", "Words Associated with Winter", "Computer Parts", 
+                "To Describe Ocean", "Types of Flower", "Types of Pasta", "Types of Cheese", 
+                "Types of Bread", "Types of Wine", "Words Associated with Diet", "Words Ending in N","Words Ending in B", "Things Associated with Christmas ", 
+                "Spicy Foods", "Words Associated with Honeymoon ", "Types of Weather","To Describe Food","Types of Candy", 
+                "Words Associated with Religion", "Words Associated with Beach", "Words Associated with Fashion", 
+                "Words Associated with Fire", "Words Associated with Rain", "Cold Things", "Wooden Things", "Hot Things", "Green Things", "Words Ending in S",
+                "Words Ending in A"
+            ]
+            let thirdRow = document.getElementById('thirdRow');
+            for (let i = 0; i < 12; i++) {
+                const row = document.createElement("tr");
+                const column1 = document.createElement("td");
+                const column2 = document.createElement("td");
+
+                const randomIndex = Math.floor(Math.random() * categories.length);
+                const randomCategory = categories[randomIndex];
+                categories.splice(randomIndex, 1); // Remove the chosen category from the array
+                const input = document.createElement("input");
+                input.setAttribute("type", "text");
+                input.setAttribute("autocomplete", "off");
+                input.setAttribute("placeholder", letterNow);
+                input.style.width= "100%"
+                input.style.height="100%"
+                
+                column1.textContent = (i+1)+ ". "+ "  " + randomCategory;
+                column1.style.width = "50%"
+                column1.style.padding = "10px"
+                column2.style.width = "50%"
+                column2.appendChild(input);
+                
+                row.appendChild(column1);
+                row.appendChild(column2);
+                
+                thirdRow.appendChild(row);
+            }
+        }
+
+
+
+const timeLeftElement = document.querySelector('.time-left')
+let timeLeft = 120
+
+function saveAnswersToLocalstorage() {
+    const answers = {};
+    const tableRows = document.querySelectorAll('#thirdRow tr');
+    
+    tableRows.forEach((row, index) => {
+        const columns = row.querySelectorAll('td');
+        const category = columns[0].textContent.split('.')[1].trim(); // Extract category name
+        const input = columns[1].querySelector('input');
+        const answer = input.value;
+        answers[category] = answer;
+    });
+
+    // Save answers to local storage with the username as the key
+    localStorage.setItem(username, JSON.stringify(answers));
+}
+
+
+function updateTime() {
+    // Convert time to minutes and seconds
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    // Display the time in the paragraph element
+    timeLeftElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    // Check if the timer has reached 0
+    if (timeLeft > 0) {
+      // Decrement time by 1 second
+      timeLeft--;
+      // Call updateTime again after 1 second
+      setTimeout(updateTime, 1000);
+    }else {
+        // If time is up, save answers to local storage
+        saveAnswersToLocalstorage();
+        console.log(localStorage)
+        window.location.href="scattegories.html"
+    }
+}
+
+    doneEarly.addEventListener("click", function(){
+        // If time is up, save answers to local storage
+        saveAnswersToLocalstorage();
+        console.log(localStorage)
+        window.location.href="scattegories.html"
+    })
+    
+    const spellingbeeBtn = document.getElementById("spellingbee")
+    spellingbeeBtn.onclick = function(){
+        document.body.style.opacity = 0; // Fade out the current page
+        setTimeout(function() {
+            window.location.href = "spellingbee.html"; // Navigate to the new page after a delay
+        }, 500); // 
+    }
+
+    const guessthewordBtn = document.getElementById("guesstheword")
+    guessthewordBtn.onclick = function(){
+        document.body.style.opacity = 0; // Fade out the current page
+        setTimeout(function() {
+            window.location.href = "guesstheword.html" // Navigate to the new page after a delay
+        }, 500)
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
