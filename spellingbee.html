@@ -319,7 +319,7 @@
         <p id="changedLetterstat">Changed Letters: </p>
         <div id="statButtons">
             <button id="restart">Try Again</button>
-            <button onclick ="welcome.html" id="home">Home</button>
+            <button id="home">Home</button>
         </div>
     </div>
 
@@ -724,6 +724,11 @@
         location.reload();
         }, 2000); // Reload the page after 2000 milliseconds (2 seconds)
     }
+
+    const homeBtn = document.getElementById("home")
+    homeBtn.addEventListener("click", function(){
+        window.location.href="welcome.html"
+    })
 
 
 </script>
